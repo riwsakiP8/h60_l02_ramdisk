@@ -1,0 +1,106 @@
+on early-init
+
+on init
+
+on early-fs
+
+on fs
+
+on post-fs
+
+on post-fs-data
+
+on early-boot
+
+on boot
+	mkdir /data/nfc
+	chown nfc nfc /data/nfc
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chown system system /sys/devices/platform/huawei_sensor/acc_info
+	chown system system /sys/devices/platform/huawei_sensor/mag_info
+	chown system system /sys/devices/platform/huawei_sensor/gyro_info
+	chown system system /sys/devices/platform/huawei_sensor/als_info
+	chown system system /sys/devices/platform/huawei_sensor/ps_info
+	chown system system /sys/devices/platform/huawei_sensor/gyro_selfTest
+	chown system system /sys/devices/platform/huawei_sensor/mag_selfTest
+	chown system system /sys/devices/platform/huawei_sensor/acc_calibrate
+	chown system system /sys/devices/platform/huawei_sensor/acc_enable
+	chown system system /sys/devices/platform/huawei_sensor/acc_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/mag_enable
+	chown system system /sys/devices/platform/huawei_sensor/mag_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/gyro_enable
+	chown system system /sys/devices/platform/huawei_sensor/gyro_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/als_enable
+	chown system system /sys/devices/platform/huawei_sensor/als_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/ps_enable
+	chown system system /sys/devices/platform/huawei_sensor/ps_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/os_enable
+	chown system system /sys/devices/platform/huawei_sensor/os_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/lines_enable
+	chown system system /sys/devices/platform/huawei_sensor/lines_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/gras_enable
+	chown system system /sys/devices/platform/huawei_sensor/gras_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/rvs_enable
+	chown system system /sys/devices/platform/huawei_sensor/rvs_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/i2c_rw
+	chown system system /sys/devices/platform/huawei_sensor/acc_selfTest
+	chown system system /sys/devices/platform/huawei_tp_color/tp_color_info
+	chown system system /sys/devices/platform/huawei_touch/touch_chip_info
+	chown system system /sys/devices/platform/huawei_touch/touch_sensitivity
+	chown system system /sys/devices/platform/huawei_touch/touch_window
+	chown system system /sys/devices/platform/huawei_touch/fw_update_sd
+	chown system system /sys/devices/platform/huawei_touch/calibrate
+	chown system system /sys/devices/platform/huawei_touch/hand_detect
+	chown system system /sys/devices/platform/huawei_touch/loglevel
+	chown system system /sys/devices/platform/huawei_touch/touch_glove
+	chown system system /sys/devices/platform/huawei_touch/touch_gesture_wakeup
+	chown system system /sys/devices/platform/huawei_touch/touch_gesture_wakeup_position
+	chown system system /sys/devices/platform/huawei_touch/dsm_debug
+	chown system system /sys/devices/platform/huawei_touch/touch_register_operation
+	chown system system /sys/devices/platform/huawei_touch/input/input4/rmidev/open
+	chown system system /sys/devices/platform/huawei_touch/input/input4/rmidev/release
+	chown system system /sys/devices/platform/huawei_touch/input/input4/rmidev/data
+	chown system system /sys/devices/platform/huawei_touch/input/input4/rmidev/attn_state
+	chown system system /proc/touchscreen/rawdata
+	chown system system /sys/class/k3_lcd/lcd_info/voltage_enable
+	chown system irda /dev/ttyAMA0
+	chmod 0660 /dev/ttyAMA0
+	chown system irda /sys/class/irda/irda_maxim/power_cfg
+	write /sys/class/irda/irda_maxim/power_cfg 1
+	chown system system /dev/fpc1020
+	chmod 0660 /dev/fpc1020
+	chown system system /sys/bus/spi/devices/spi0.0/diag/result
+	chown system system /sys/bus/spi/devices/spi0.0/diag/navigation_enable
+	chown system system /sys/bus/spi/devices/spi0.0/diag/wakeup_enable
+	chown system system /sys/bus/spi/devices/spi0.0/diag/chip_id
+	chown system system /sys/bus/spi/devices/spi0.0/diag/selftest
+	chown system system /sys/bus/spi/devices/spi0.0/diag/fingerdetect
+	chown system system /sys/bus/spi/devices/spi0.0/setup/adc_gain
+	chown system system /sys/bus/spi/devices/spi0.0/setup/adc_shift
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_mode
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_count
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_col_groups
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_col_start
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_row_count
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_row_start
+	chown system system /sys/bus/spi/devices/spi0.0/setup/capture_settings_mux
+	chown system system /sys/bus/spi/devices/spi0.0/setup/pxl_ctrl
+	chown system system /sys/devices/platform/fingerprint/fingerprint_chip_info
+
+
+
+service device-monitor /system/bin/device_monitor
+     class main
+     user root
+     group system

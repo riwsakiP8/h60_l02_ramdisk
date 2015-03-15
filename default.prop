@@ -1,0 +1,13 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.secure=1
+ro.allow.mock.location=0
+ro.debuggable=0
+ro.crypto.state=unsupported
+persist.sys.usb.config=manufacture,adb
+ro.build.tag_id.boot=tag_K3V300R001C00B272SP05
+ro.build.tag_time.boot=2014-08-13-0659
+ro.build.push_time.boot=
+
+ro.confg.hw_bootversion=H60-L02V100R001CHNC00B310_BOOT

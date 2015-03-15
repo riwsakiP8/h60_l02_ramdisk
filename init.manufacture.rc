@@ -1,0 +1,67 @@
+on early-init
+
+on init
+    mkdir /cust
+    mkdir /splash2
+    mkdir /3rdmodem
+    mkdir /3rdmodemnvm
+    mkdir /3rdmodemnvmbkp
+
+on early-fs
+
+on fs
+    wait /dev/block/platform/ff1fe000.dwmmc0/by-name/oeminfo
+    start oeminfo_nvm
+
+    mount ext4 /dev/block/platform/ff1fe000.dwmmc0/by-name/cust /cust wait ro nosuid nodev
+    fix_ext4 /sbin/e2fsck_s /dev/block/platform/ff1fe000.dwmmc0/by-name/splash2
+    mount ext4 /dev/block/platform/ff1fe000.dwmmc0/by-name/splash2 /splash2 wait rw nosuid nodev
+    mount ext4 /dev/block/platform/ff1fe000.dwmmc0/by-name/3rdmodem /3rdmodem noatime nosuid nodev
+    mount ext4 /dev/block/platform/ff1fe000.dwmmc0/by-name/3rdmodemnvm /3rdmodemnvm noatime nosuid nodev
+    mount ext4 /dev/block/platform/ff1fe000.dwmmc0/by-name/3rdmodemnvmbkp /3rdmodemnvmbkp noatime nosuid nodev
+
+    mkdir /splash2/log 0775 system system
+on post-fs
+
+on post-fs-data
+
+on early-boot
+
+on boot
+
+
+
+service atcmdserver  /system/bin/atcmdserver
+    class main
+    oneshot
+    disabled
+
+service oeminfo_nvm /sbin/oeminfo_nvm_server
+    class core
+    critical
+    ioprio rt 4
+
+service diagserver /system/bin/diagserver
+    class main
+    user root
+    oneshot
+
+service check_root /sbin/check_root
+    class main
+    oneshot
+service check_longpress /system/bin/check_longpress
+    class main
+    oneshot
+on property:sys.boot_completed=1
+    start check_root
+
+on property:ro.runmode=factory
+    chmod 0775 /data/share/0/Music
+    chmod 0775 /data/share/0/Pictures
+    chown media_rw media_rw /data/share/0
+    chown media_rw media_rw /data/share/0/Music
+    chown media_rw media_rw /data/share/0/Pictures
+
+service hwnffserver  /system/bin/hwnffserver
+    class main
+    socket hwnff stream 0660 root mount
